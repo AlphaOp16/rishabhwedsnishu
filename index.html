@@ -147,7 +147,15 @@ section{padding:64px 28px;text-align:center}
 .event .time{font-size:20px;font-weight:600;font-style:italic;color:var(--ink);margin-top:12px}
 .event .venue{margin-top:18px}
 .event .venue strong{display:block;font-size:24px;font-weight:700}
-.event .venue span{display:block;font-size:18px;color:var(--muted);margin-top:4px;line-height:1.45}
+.event .venue span{display:block;font-size:18px;color:var(--muted);margin-top:4px;line-height:1.45;text-wrap:balance}
+.event .sched{max-width:290px;margin:18px auto 0}
+.event .row{display:flex;align-items:baseline;gap:8px;font-size:19px;padding:4px 0}
+.event .row b{font-weight:700;color:var(--ink);white-space:nowrap}
+.event .row i{flex:1;border-bottom:1.5px dotted var(--gold);transform:translateY(-4px)}
+.event .row em{font-style:italic;font-weight:600;color:var(--maroon);white-space:nowrap}
+.event .note{font-size:18px;font-style:italic;color:var(--maroon);line-height:1.5;margin-top:14px;text-wrap:balance}
+.event .vlabel{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text);margin-bottom:6px}
+.event .venue{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .btn{flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 10px;font-family:var(--serif);font-weight:700;font-size:14px;letter-spacing:.06em;white-space:nowrap;text-transform:uppercase;text-decoration:none;border:1px solid var(--maroon);color:var(--maroon);background:transparent;cursor:pointer;border-radius:999px}
 .btn.solid{background:var(--maroon);color:#fbeed3}
@@ -357,7 +365,7 @@ section{padding:64px 28px;text-align:center}
   <section class="blessing">
     <svg class="orn reveal" viewBox="0 0 70 36"><use href="#lotus"/></svg>
     <p class="quote reveal">Two hearts, two families, one sacred bond. Your presence and blessings will make our celebration complete.</p>
-    <p class="lead reveal" style="margin-top:20px;font-size:19px">With love &amp; warm regards,<br>The Tyagi (Mukhiya) Family</p>
+    <p class="lead reveal" style="margin-top:20px;font-size:19px">With love &amp; warm regards,<br>Mukhiya Tyagi Family</p>
   </section>
 
   <section class="footer">
@@ -380,12 +388,16 @@ section{padding:64px 28px;text-align:center}
 const CONFIG = {
   music: "music.mp3",                          // song from reference video (loops) — plays after the doors open; "" = no music
   musicVolume: 0.7,
-  weddingStart: "2026-12-11T00:00:00+05:30",   // countdown target
+  weddingStart: "2026-12-11T19:00:00+05:30",   // countdown target
   events: [
-    { name: "Engagement", date: "2026-11-19", time: "",
+    { name: "Engagement", date: "2026-11-19", start: "16:00",
+      schedule: [["Sagai Ceremony", "4:00 PM"], ["Dinner", "7:00 PM"]], note: "",
+      venueLabel: "Sagai Venue",
       venue: "The Hari Castle", address: "Near EPE Express way Delhi Saharanpur Road,<br>Mavikala, Baghpat, Uttar Pradesh 250101",
       mapLink: "https://maps.app.goo.gl/5Pe3vLVRzoSUtDAH9" },
-    { name: "Wedding", date: "2026-12-11", time: "",
+    { name: "Wedding", date: "2026-12-11", start: "19:00",
+      schedule: [["Dinner", "7:00 PM"]], note: "Barat will depart from our residence<br>&amp; proceed to the venue",
+      venueLabel: "Venue",
       venue: "Vedanta Farms & Resort", address: "Opp. Machhra Degree College,<br>Garh Road, Uttar Pradesh 250106",
       mapLink: "https://maps.app.goo.gl/g2kMZHbBYauE4riSA" }
   ]
@@ -411,13 +423,19 @@ const parseD = s => { const [y,m,d] = s.split("-").map(Number); return {y,m,d,dt
 // Event cards
 const icoPin = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 const icoCal = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+// start time is Indian time (IST); calendar entry runs 5 hours
+function utcRange(ev){
+  const s = new Date(`${ev.date}T${ev.start}:00+05:30`), e = new Date(s.getTime() + 5*36e5);
+  const f = x => x.toISOString().replace(/[-:]/g,"").slice(0,15) + "Z";
+  return f(s) + "/" + f(e);
+}
 function gcal(ev){
   const {y,m,d} = parseD(ev.date);
   const nx = new Date(Date.UTC(y,m-1,d+1));
   const loc = ev.venue + (ev.address ? ", " + ev.address.replace(/<br>/g," ") : "");
   const p = new URLSearchParams({action:"TEMPLATE",text:`Rishabh & Nishu — ${ev.name}`,
-    dates:`${y}${pad(m)}${pad(d)}/${nx.getUTCFullYear()}${pad(nx.getUTCMonth()+1)}${pad(nx.getUTCDate())}`,
-    location:loc, details:`${ev.name} of Rishabh Tyagi & Nishu Tyagi.${ev.time?" Time: "+ev.time+".":""} Directions: ${ev.mapLink}`});
+    dates: ev.start ? utcRange(ev) : `${y}${pad(m)}${pad(d)}/${nx.getUTCFullYear()}${pad(nx.getUTCMonth()+1)}${pad(nx.getUTCDate())}`,
+    location:loc, details:`${ev.name} of Rishabh Tyagi & Nishu Tyagi.${ev.schedule?" "+ev.schedule.map(([l,t])=>l+": "+t).join(", ")+".":""} Directions: ${ev.mapLink}`});
   return "https://calendar.google.com/calendar/render?" + p;
 }
 $("#event-list").innerHTML = CONFIG.events.map(ev => {
@@ -425,8 +443,9 @@ $("#event-list").innerHTML = CONFIG.events.map(ev => {
   return `<article class="event reveal">
     <h3>${ev.name}</h3>
     <div class="dt"><div class="side">${DAYS[dt.getDay()]}</div><div class="big">${pad(d)}</div><div class="side">${MONTHS[m-1].slice(0,3)} ${y}</div></div>
-    ${ev.time ? `<div class="time">${ev.time}</div>` : ""}
-    <div class="venue"><strong>${ev.venue}</strong>${ev.address ? `<span>${ev.address}</span>` : ""}</div>
+    ${ev.schedule && ev.schedule.length ? `<div class="sched">${ev.schedule.map(([l,t]) => `<div class="row"><b>${l}</b><i></i><em>${t}</em></div>`).join("")}</div>` : ""}
+    ${ev.note ? `<p class="note">${ev.note}</p>` : ""}
+    <div class="venue">${ev.venueLabel ? `<div class="vlabel">${ev.venueLabel}</div>` : ""}<strong>${ev.venue}</strong>${ev.address ? `<span>${ev.address}</span>` : ""}</div>
     <div class="btns">
       <a class="btn solid" href="${ev.mapLink}" target="_blank" rel="noopener">${icoPin}Directions</a>
       <a class="btn" href="${gcal(ev)}" target="_blank" rel="noopener">${icoCal}Save date</a>
