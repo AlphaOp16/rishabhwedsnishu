@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap&text=%E0%A5%A5%20%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%97%E0%A4%A3%E0%A5%87%E0%A4%B6%E0%A4%BE%E0%A4%AF%E0%A4%A8%E0%A4%AE%E0%A4%83%E0%A4%B6%E0%A5%81%E0%A4%AD%E0%A4%B5%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B9" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <style>
 :root{
   --ivory:#fbf6ee; --paper:#fffaf3; --maroon:#7a1f2b; --maroon-2:#621824; --maroon-3:#4d111b; --gold:#b8893b; --gold-2:#d9b166; --gold-3:#f3dca6;
@@ -101,6 +101,12 @@ section{padding:64px 28px;text-align:center}
 .names .n{display:block;font-size:60px}
 .names .amp{display:block;font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold-text);margin:8px 0}
 .full{font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.shloka.sub{font-size:17px;line-height:1.75;margin-top:6px;color:var(--maroon-2)}
+.gp{font-size:22px;font-weight:700;color:var(--ink);line-height:1.35}
+.req{font-size:18px;font-style:italic;color:var(--muted);line-height:1.55;margin-top:8px}
+.cer{font-family:var(--script);font-weight:400;font-size:clamp(36px,10.5vw,44px);color:var(--maroon);line-height:1.15;margin:10px 0 2px}
+.par{text-wrap:balance;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--muted);line-height:1.45;margin-top:10px}
+.with{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold-text);margin:14px 0 10px}
 .inv{font-size:20px;font-style:italic;color:var(--ink);line-height:1.6}
 
 /* ---------- SCRATCH TO REVEAL ---------- */
@@ -201,32 +207,33 @@ section{padding:64px 28px;text-align:center}
     <linearGradient id="gGoldU" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="110" y2="128">
       <stop offset="0" stop-color="#f6e1a4"/><stop offset=".45" stop-color="#d4a248"/><stop offset=".7" stop-color="#b07a2a"/><stop offset="1" stop-color="#e9c77a"/>
     </linearGradient>
-    <!-- Ganesh Ji — gold, traditional style -->
-    <g id="ganesh">
-      <path d="M46 44 C30 30 8 36 8 58 C8 74 18 84 30 86 C34 86 36 82 34 80 C38 82 42 82 44 78 C44 70 46 60 48 54 Z" fill="url(#gGold)"/>
-      <path d="M74 44 C90 30 112 36 112 58 C112 74 102 84 90 86 C86 86 84 82 86 80 C82 82 78 82 76 78 C76 70 74 60 72 54 Z" fill="url(#gGold)"/>
-      <path d="M40 50 C28 44 16 50 16 60 C16 70 24 77 34 78" fill="none" stroke="#7a1f2b" stroke-width="1.3" opacity=".55"/>
-      <path d="M80 50 C92 44 104 50 104 60 C104 70 96 77 86 78" fill="none" stroke="#7a1f2b" stroke-width="1.3" opacity=".55"/>
-      <path d="M44 40 L76 40 L72 30 L66 22 L62 12 L60 4 L58 12 L54 22 L48 30 Z" fill="url(#gGold)"/>
-      <rect x="41" y="38" width="38" height="6" rx="2" fill="url(#gGold)"/>
-      <path d="M44 41 H76" stroke="#7a1f2b" stroke-width=".9" opacity=".6"/>
-      <path d="M50 31 Q60 24 70 31 M54 22 Q60 18 66 22" fill="none" stroke="#7a1f2b" stroke-width="1" opacity=".55"/>
-      <circle cx="60" cy="34" r="2" fill="#7a1f2b" opacity=".7"/>
-      <circle cx="60" cy="3" r="2" fill="url(#gGold)"/>
-      <path d="M43 44 C41 56 42 66 50 72 L70 72 C78 66 79 56 77 44 Z" fill="url(#gGold)"/>
-      <g fill="none" stroke="url(#gGoldU)" stroke-linecap="round">
-        <path d="M60 60 C60 76 58 86 54 95" stroke-width="17"/>
-        <path d="M55 92 C52 100 47 105 40 107" stroke-width="11"/>
-        <path d="M42 107 C34 110 28 106 29 100 C30 95 36 94 37 99" stroke-width="6"/>
-      </g>
-      <path d="M52 56 Q55 53 58 56 Q55 58 52 56Z M62 56 Q65 53 68 56 Q65 58 62 56Z" fill="#7a1f2b"/>
-      <path d="M56 46 Q60 52 64 46" fill="none" stroke="#c0392b" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M60 48 V51" stroke="#c0392b" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M54 72 Q60 74 66 72 M53 80 Q59 82 64 80 M51 88 Q56 90 61 88 M48 96 Q52 98 56 96" fill="none" stroke="#7a1f2b" stroke-width="1" opacity=".5"/>
-      <path d="M67 72 C71 77 76 79 81 78 C77 74 74 71 70 68 Z" fill="#fffaf3"/>
-      <path d="M80 100 C76 100 74 96 77 92 L80 88 L83 92 C86 96 84 100 80 100Z" fill="url(#gGold)"/>
-      <path d="M30 122 Q60 112 90 122 Q60 126 30 122Z" fill="url(#gGold)"/>
-      <path d="M44 120 C42 112 46 106 52 104 C54 110 52 116 48 120Z M76 120 C78 112 74 106 68 104 C66 110 68 116 72 120Z M54 118 C54 110 57 104 60 100 C63 104 66 110 66 118Z" fill="url(#gGold)" opacity=".9"/>
+    <!-- Ganesh Ji — line-art, traditional invitation style -->
+    <g id="ganesh" fill="none" stroke="url(#gGoldU)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- mukut (crown) -->
+      <circle cx="60" cy="5" r="2.4" fill="url(#gGoldU)" stroke="none"/>
+      <path d="M60 8 V13"/>
+      <path d="M45 36 C45 25 51 17 60 13 C69 17 75 25 75 36"/>
+      <path d="M50 28 Q60 21 70 28"/>
+      <path d="M43 37 H77"/>
+      <circle cx="60" cy="31" r="1.8" fill="url(#gGoldU)" stroke="none"/>
+      <!-- ears -->
+      <path d="M45 41 C34 32 16 36 15 53 C14 67 26 75 39 71 C43 70 45 66 45 62"/>
+      <path d="M75 41 C86 32 104 36 105 53 C106 67 94 75 81 71 C77 70 75 66 75 62"/>
+      <path d="M38 47 C30 45 24 50 24 56" stroke-width="2"/>
+      <path d="M82 47 C90 45 96 50 96 56" stroke-width="2"/>
+      <!-- tilak + eyes -->
+      <path d="M60 41 V48" stroke-width="2.4"/>
+      <path d="M51 52 Q54.5 49 58 52" stroke-width="2.2"/>
+      <path d="M62 52 Q65.5 49 69 52" stroke-width="2.2"/>
+      <!-- trunk, curling to the right -->
+      <path d="M53 58 C50 74 53 90 64 98 C75 105 89 97 86 86 C84 79 75 79 74 86 C73 90 77 92 80 90"/>
+      <path d="M67 58 C66 70 67 80 72 84"/>
+      <path d="M54 72 Q58 74 62 72 M56 84 Q60 86 64 83" stroke-width="1.8"/>
+      <!-- tusk -->
+      <path d="M67 64 L74 70" stroke-width="2.4"/>
+      <!-- lotus base -->
+      <path d="M34 120 Q60 112 86 120" stroke-width="2.4"/>
+      <path d="M60 118 C55 112 56 106 60 102 C64 106 65 112 60 118 Z M50 119 C44 116 42 110 44 106 C50 108 53 113 50 119 Z M70 119 C76 116 78 110 76 106 C70 108 67 113 70 119 Z" stroke-width="2"/>
     </g>
     <!-- mandala ring -->
     <g id="mandala" fill="none" stroke="currentColor" stroke-width=".8">
@@ -301,20 +308,24 @@ section{padding:64px 28px;text-align:center}
       <div class="disc"><svg viewBox="4 0 112 128"><use href="#ganesh"/></svg></div>
     </div>
     <div class="shloka reveal">॥ श्री गणेशाय नमः ॥</div>
-    <p class="bless reveal">With the divine blessings of Lord Ganesha<br>and the grace of our elders</p>
+    <p class="shloka sub reveal">वक्रतुण्ड महाकाय, सूर्यकोटि समप्रभः ।<br>निर्विघ्नं कुरु मे देव, सर्वकार्येषु सर्वदा ॥</p>
 
     <div class="card reveal">
       <svg class="cnr tl" viewBox="0 0 26 26"><use href="#corner"/></svg><svg class="cnr tr" viewBox="0 0 26 26"><use href="#corner"/></svg>
       <svg class="cnr bl" viewBox="0 0 26 26"><use href="#corner"/></svg><svg class="cnr br" viewBox="0 0 26 26"><use href="#corner"/></svg>
-      <div class="eyebrow" style="letter-spacing:.12em">Together with their families</div>
-      <h1 class="names" style="margin-top:18px">
+      <p class="gp">Smt. Saroj &amp; Sh. Om Prakash Tyagi</p>
+      <p class="req">cordially request the pleasure of your company<br>on the auspicious occasion of the</p>
+      <div class="cer">Wedding Ceremony</div>
+      <p class="req" style="margin-top:0">of their beloved grandson</p>
+      <h1 class="names" style="margin-top:16px">
         <span class="n">Rishabh</span>
-        <span class="amp">&amp;</span>
+        <span class="par" style="display:block">(S/o Mrs. Rajni Tyagi &amp; Mr. Yogesh Tyagi)</span>
+        <span class="with" style="display:block">with</span>
         <span class="n">Nishu</span>
+        <span class="par" style="display:block">(D/o Mrs. Seema Tyagi &amp; Late Mr. Dinesh Tyagi)</span>
       </h1>
-      <div class="full">Rishabh Tyagi · Nishu Tyagi</div>
       <svg class="orn" viewBox="0 0 70 36"><use href="#lotus"/></svg>
-      <p class="inv">request the honour of your presence<br>as they begin their journey together</p>
+      <p class="inv">as they begin their journey together</p>
     </div>
   </section>
 
@@ -346,7 +357,7 @@ section{padding:64px 28px;text-align:center}
   <section class="blessing">
     <svg class="orn reveal" viewBox="0 0 70 36"><use href="#lotus"/></svg>
     <p class="quote reveal">Two hearts, two families, one sacred bond. Your presence and blessings will make our celebration complete.</p>
-    <p class="lead reveal" style="margin-top:20px;font-size:19px">With love &amp; warm regards,<br>The Tyagi Families</p>
+    <p class="lead reveal" style="margin-top:20px;font-size:19px">With love &amp; warm regards,<br>The Tyagi (Mukhiya) Family</p>
   </section>
 
   <section class="footer">
